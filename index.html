@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veda Solutions | Engineering Digital Advantages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link:hover {
+            color: #6366f1;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-transparent backdrop-blur-sm">
+        <div class="text-2xl font-bold tracking-tighter text-white">VEDA<span class="text-indigo-500">.</span></div>
+        
+        <div class="relative">
+            <button id="exploreBtn" class="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:bg-white/10 transition-all">
+                <span>Explore</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            
+            <div id="exploreMenu" class="hidden absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl p-2">
+                <a href="#problems" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Problems</a>
+                <a href="#solutions" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Solutions</a>
+                <a href="#lab" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Lab</a>
+                <a href="#projects" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Projects</a>
+                <a href="#cta" class="block px-4 py-2 bg-indigo-600 rounded-xl mt-2 text-center text-white">Build With Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-20">
+        <div class="max-w-4xl text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-sm font-medium mb-6">We don't just build websites.</span>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight">Your Business Has Problems.<br> <span class="gradient-text">We Build The Systems To Solve Them.</span></h1>
+            <p class="text-slate-400 text-xl mb-10 max-w-2xl mx-auto">Websites are just the beginning. We create digital engines that help businesses get more customers, automate work, and grow faster.</p>
+            <a href="#cta" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(99,102,241,0.3)]">Build My Solution</a>
+        </div>
+    </header>
+
+    <section id="problems" class="py-24 px-6 max-w-6xl mx-auto scroll-reveal">
+        <h2 class="text-sm font-bold tracking-widest text-indigo-500 mb-4">THE PROBLEM</h2>
+        <h3 class="text-4xl md:text-5xl font-bold mb-16">Every Business Is Losing Something.</h3>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass p-8 rounded-3xl">
+                <div class="w-12 h-12 bg-rose-500/10 rounded-xl flex items-center justify-center mb-6 text-rose-400">?</div>
+                <h4 class="text-xl font-bold mb-2">Visibility</h4>
+                <p class="text-slate-400">Customers are lost because they simply can't find you online.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-400">⌛</div>
+                <h4 class="text-xl font-bold mb-2">Efficiency</h4>
+                <p class="text-slate-400">Time is wasted because your daily work is still manual.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400">📉</div>
+                <h4 class="text-xl font-bold mb-2">Sales</h4>
+                <p class="text-slate-400">Revenue is missed because follow-ups are forgotten.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">🚀</div>
+                <h4 class="text-xl font-bold mb-2">Growth</h4>
+                <p class="text-slate-400">Growth is stopped because modern systems are missing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-24 px-6 max-w-6xl mx-auto scroll-reveal">
+        <h3 class="text-4xl font-bold mb-16 text-center">What We Build</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass p-8 rounded-3xl border-l-4 border-l-indigo-500">
+                <h4 class="text-2xl font-bold mb-4">🌐 Business Presence System</h4>
+                <p class="text-slate-400 mb-4">Turn your idea into a digital identity with high-performance platforms.</p>
+                <ul class="text-slate-300 space-y-2">
+                    <li>✓ High-performance websites</li>
+                    <li>✓ Custom Business portals</li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-3xl border-l-4 border-l-emerald-500">
+                <h4 class="text-2xl font-bold mb-4">🍽 Customer Experience Systems</h4>
+                <p class="text-slate-400 mb-4">Interaction engines for Restaurants, Hotels, and Retail.</p>
+                <ul class="text-slate-300 space-y-2">
+                    <li>✓ QR Menus & Ordering</li>
+                    <li>✓ Booking & Management</li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-3xl border-l-4 border-l-amber-500">
+                <h4 class="text-2xl font-bold mb-4">⚙️ Business Automation Engine</h4>
+                <p class="text-slate-400 mb-4">Remove repetitive friction from your daily workflow.</p>
+                <ul class="text-slate-300 space-y-2">
+                    <li>✓ Lead management</li>
+                    <li>✓ Internal Dashboards</li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-3xl border-l-4 border-l-purple-500">
+                <h4 class="text-2xl font-bold mb-4">🤖 AI-Powered Marketing</h4>
+                <p class="text-slate-400 mb-4">Your brand deserves attention. We build content systems.</p>
+                <ul class="text-slate-300 space-y-2">
+                    <li>✓ AI Ads & Creatives</li>
+                    <li>✓ Automated content workflows</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white/5 scroll-reveal">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-4xl font-bold mb-16 text-center">The Veda Method</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-500 mb-2">01</div>
+                    <div class="font-bold">Discover</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-500 mb-2">02</div>
+                    <div class="font-bold">Design</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-500 mb-2">03</div>
+                    <div class="font-bold">Develop</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-500 mb-2">04</div>
+                    <div class="font-bold">Deploy</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-500 mb-2">05</div>
+                    <div class="font-bold">Scale</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 max-w-6xl mx-auto scroll-reveal">
+        <h3 class="text-4xl font-bold mb-16 text-center">Project Showcase</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="group relative overflow-hidden rounded-3xl glass p-6">
+                <div class="mb-4 text-indigo-400 text-sm font-bold">RESTAURANT</div>
+                <h4 class="text-2xl font-bold mb-2">QR Ordering System</h4>
+                <p class="text-slate-400 text-sm">Solved slow ordering issues by digitizing the customer menu journey.</p>
+            </div>
+            <div class="group relative overflow-hidden rounded-3xl glass p-6">
+                <div class="mb-4 text-emerald-400 text-sm font-bold">FUNCTION HALL</div>
+                <h4 class="text-2xl font-bold mb-2">Booking Engine</h4>
+                <p class="text-slate-400 text-sm">Transformed manual paper bookings into a streamlined calendar system.</p>
+            </div>
+            <div class="group relative overflow-hidden rounded-3xl glass p-6">
+                <div class="mb-4 text-amber-400 text-sm font-bold">LOCAL BUSINESS</div>
+                <h4 class="text-2xl font-bold mb-2">Visibility System</h4>
+                <p class="text-slate-400 text-sm">Helped local business reclaim their market share with digital presence.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="py-24 px-6 text-center scroll-reveal">
+        <h2 class="text-5xl font-bold mb-6">Your Competitors Are Building.</h2>
+        <h3 class="text-2xl text-slate-400 mb-10">Are You?</h3>
+        <p class="text-xl mb-8">Let's create your next digital advantage.</p>
+        <div class="flex flex-col items-center gap-4">
+            <a href="tel:9494900435" class="text-3xl font-bold text-white hover:text-indigo-400 transition">📞 9494900435</a>
+            <p class="text-slate-500 mt-8">© 2026 VEDA SOLUTIONS</p>
+        </div>
+    </section>
+
+    <script>
+        // Explore Menu Toggle
+        const exploreBtn = document.getElementById('exploreBtn');
+        const exploreMenu = document.getElementById('exploreMenu');
+
+        exploreBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            exploreMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            exploreMenu.classList.add('hidden');
+        });
+
+        // Simple Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
