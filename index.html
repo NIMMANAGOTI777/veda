@@ -3,226 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veda Solutions | Business Transformation Systems</title>
+    <title>Veda Solutions | Premium Business Transformation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
+        :root {
+            --gold: #D4A24C;
+            --black: #050505;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: #050505;
-            color: white;
-            overflow-x: hidden;
+            background-color: var(--black);
+            color: #f8fafc;
         }
 
-        /* Cinematic noise overlay */
-        .noise {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            pointer-events: none;
-            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-            z-index: 9999;
-        }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
-        /* Mesh Gradient Background */
-        .mesh-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #050505 50%);
-            overflow: hidden;
-        }
-
-        .gradient-blob {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            filter: blur(80px);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(100px, 100px); }
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass:hover {
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            transform: translateY(-10px);
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #fff, #94a3b8);
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4A24C 0%, #A67C00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .gold-border {
+            border: 1px solid rgba(212, 162, 76, 0.2);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.04; pointer-events: none;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            z-index: 100;
+        }
+
+        /* Animations */
         .reveal { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
-<body class="selection:bg-indigo-500 selection:text-white">
+<body class="selection:bg-amber-900/30 selection:text-amber-500">
     <div class="noise"></div>
-    <div class="mesh-gradient">
-        <div class="gradient-blob" style="top: -200px; left: -200px;"></div>
-        <div class="gradient-blob" style="bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);"></div>
-    </div>
 
-    <!-- Navigation -->
+    <!-- Navbar -->
     <nav class="fixed w-full z-50 px-6 py-6 transition-all duration-300">
         <div class="max-w-[1200px] mx-auto flex items-center justify-between">
-            <a href="#" class="text-xl font-bold tracking-tighter">
-                <img src="https://res.cloudinary.com/do4nuj2kh/image/upload/v1781354206/8926cc0f-3948-4297-ba4d-78ce621af644-removebg-preview_uytsjc.png" alt="Veda Solutions" class="h-10 w-auto">
-            </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
-                <a href="#problems" class="hover:text-white transition">Problems</a>
-                <a href="#solutions" class="hover:text-white transition">Solutions</a>
-                <a href="#projects" class="hover:text-white transition">Projects</a>
+            <img src="https://res.cloudinary.com/do4nuj2kh/image/upload/v1781354206/8926cc0f-3948-4297-ba4d-78ce621af644-removebg-preview_uytsjc.png" alt="Veda" class="h-10 w-auto">
+            
+            <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest text-slate-400">
+                <a href="#problems" class="hover:text-amber-500 transition">Problems</a>
+                <a href="#solutions" class="hover:text-amber-500 transition">Solutions</a>
+                <a href="#projects" class="hover:text-amber-500 transition">Case Studies</a>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="https://www.instagram.com/vedasolutions?igsh=MTRya2RxcmwxZ2FxYQ==" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-all hover:scale-110">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.063.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808 0 2.43-.013 2.784-.06 3.808-.049 1.063-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06-2.43 0-2.784-.013-3.808-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808 0-2.43.013-2.784.06-3.808.049-1.063.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.536 2.013 8.89 2 11.32 2h.995zm0 2.152c-2.39 0-2.673.01-3.614.054-.88.04-1.358.182-1.677.305-.42.164-.72.36-1.036.676-.316.316-.512.616-.676 1.036-.123.319-.265.797-.305 1.677-.044.941-.054 1.224-.054 3.614 0 2.39.01 2.673.054 3.614.04.88.182 1.358.305 1.677.164.42.36.72.676 1.036.316.316.616.512 1.036.676.319.123-.797.265-1.677.305-.941.044-1.224.054-3.614.054zm0 2.152c-3.13 0-5.668 2.538-5.668 5.668 0 3.13 2.538 5.668 5.668 5.668 3.13 0 5.668-2.538 5.668-5.668 0-3.13-2.538-5.668-5.668-5.668zm0 2.152c1.948 0 3.516 1.568 3.516 3.516 0 1.948-1.568 3.516-3.516 3.516-1.948 0-3.516-1.568-3.516-3.516 0-1.948 1.568-3.516 3.516-3.516zm5.827-4.148a1.326 1.326 0 11-2.652 0 1.326 1.326 0 012.652 0z" clip-rule="evenodd" /></svg>
-                </a>
-                <a href="#cta" class="bg-white/5 hover:bg-indigo-600 border border-white/10 hover:border-indigo-500 px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105">Book Consultation</a>
-            </div>
+
+            <a href="#cta" class="px-6 py-3 rounded-full border border-amber-600/50 hover:bg-amber-600 text-sm font-semibold transition hover:scale-105">Get Consultation</a>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="min-h-screen flex flex-col justify-center items-center px-6 relative">
-        <div class="text-center max-w-3xl">
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1] reveal">
-                We Build Digital Engines <br> <span class="gradient-text">For Business Growth.</span>
-            </h1>
-            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto reveal">Stop losing time to manual work. We design the systems that automate your operations, delight your customers, and scale your revenue.</p>
-            <div class="flex gap-4 justify-center reveal">
-                <a href="#cta" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]">Build My System</a>
+    <header class="min-h-screen flex items-center pt-20 px-6 relative overflow-hidden">
+        <div class="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h1 class="text-6xl md:text-8xl font-medium mb-6 leading-[0.9]">Architecting <br><span class="gold-gradient">Digital Growth.</span></h1>
+                <p class="text-xl text-slate-400 mb-8 max-w-md font-light leading-relaxed">We transform businesses through intelligent automation, AI-driven marketing, and elite digital infrastructure. Stop building websites. Start building advantages.</p>
+                <div class="flex gap-4">
+                    <a href="#cta" class="px-8 py-4 bg-amber-600 rounded-full font-bold hover:bg-amber-700 transition">Book Strategy Call</a>
+                </div>
+                <!-- Metrics -->
+                <div class="grid grid-cols-2 gap-8 mt-12">
+                    <div><div class="text-3xl font-semibold text-amber-500">50+</div><div class="text-xs text-slate-500 uppercase tracking-widest">Systems Built</div></div>
+                    <div><div class="text-3xl font-semibold text-amber-500">98%</div><div class="text-xs text-slate-500 uppercase tracking-widest">Client Success</div></div>
+                </div>
+            </div>
+            <div class="relative reveal delay-300">
+                <div class="aspect-[4/5] bg-slate-900 rounded-2xl overflow-hidden glass border-t border-l border-white/10 relative">
+                    <img src="https://placehold.co/800x1000/111/fff?text=Digital+Transformation" alt="Luxury Business" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Problem Section -->
-    <section id="problems" class="py-24 px-6 max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-16 text-center reveal">The Hidden Cost of "Manual"</h2>
-        <div class="grid md:grid-cols-4 gap-6">
-            <div class="glass p-8 rounded-3xl reveal">
-                <div class="text-4xl mb-4">🔍</div>
-                <h3 class="font-bold mb-2">Visibility</h3>
-                <p class="text-sm text-slate-400">Customers can't find you. You're invisible in a digital market.</p>
-            </div>
-            <div class="glass p-8 rounded-3xl reveal">
-                <div class="text-4xl mb-4">⌛</div>
-                <h3 class="font-bold mb-2">Manual Work</h3>
-                <p class="text-sm text-slate-400">Your day is spent on tasks that software should handle.</p>
-            </div>
-            <div class="glass p-8 rounded-3xl reveal">
-                <div class="text-4xl mb-4">📉</div>
-                <h3 class="font-bold mb-2">Sales Friction</h3>
-                <p class="text-sm text-slate-400">Leads go cold because follow-ups are inconsistent.</p>
-            </div>
-            <div class="glass p-8 rounded-3xl reveal">
-                <div class="text-4xl mb-4">🧱</div>
-                <h3 class="font-bold mb-2">Missing Systems</h3>
-                <p class="text-sm text-slate-400">Growth is capped by your current operational limits.</p>
+    <section id="problems" class="py-32 px-6">
+        <div class="max-w-[1200px] mx-auto">
+            <h2 class="text-5xl mb-20 text-center">The "Manual" Cost</h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Problem Cards -->
+                <div class="glass p-8 rounded-xl gold-border hover:bg-white/5 transition duration-500 reveal">
+                    <h3 class="text-2xl mb-4 text-amber-500">Visibility</h3>
+                    <p class="text-slate-400 text-sm">Customers pass you by because your digital presence doesn't match your business quality.</p>
+                </div>
+                <div class="glass p-8 rounded-xl gold-border hover:bg-white/5 transition duration-500 reveal delay-100">
+                    <h3 class="text-2xl mb-4 text-amber-500">Efficiency</h3>
+                    <p class="text-slate-400 text-sm">Days lost to repetitive tasks that software should automate instantly.</p>
+                </div>
+                <div class="glass p-8 rounded-xl gold-border hover:bg-white/5 transition duration-500 reveal delay-200">
+                    <h3 class="text-2xl mb-4 text-amber-500">Conversion</h3>
+                    <p class="text-slate-400 text-sm">Leads go cold because manual follow-ups are inconsistent.</p>
+                </div>
+                <div class="glass p-8 rounded-xl gold-border hover:bg-white/5 transition duration-500 reveal delay-300">
+                    <h3 class="text-2xl mb-4 text-amber-500">Scalability</h3>
+                    <p class="text-slate-400 text-sm">Growth is capped by your operational capacity, not market demand.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Build (Bento Grid) -->
-    <section id="solutions" class="py-24 px-6 max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-16 text-center reveal">Digital Growth Systems</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-            <div class="glass md:col-span-2 p-8 rounded-3xl reveal flex flex-col justify-end border-indigo-500/30">
-                <h3 class="text-2xl font-bold mb-2">Automation Engines</h3>
-                <p class="text-slate-400">We replace spreadsheets with automated pipelines that manage your leads and sales without human intervention.</p>
+    <section id="solutions" class="py-32 px-6 bg-slate-950">
+        <div class="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="text-6xl font-medium mb-8">Systems <span class="gold-gradient">Designed to Scale.</span></h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">We don't build pages; we build revenue engines. Every system is bespoke, ensuring your unique business challenges are turned into your biggest growth lever.</p>
             </div>
-            <div class="glass p-8 rounded-3xl reveal flex flex-col justify-end border-emerald-500/30">
-                <h3 class="text-2xl font-bold mb-2">AI-Driven Marketing</h3>
-                <p class="text-slate-400">Smart content systems that keep your brand visible 24/7.</p>
-            </div>
-            <div class="glass p-8 rounded-3xl reveal flex flex-col justify-end border-amber-500/30">
-                <h3 class="text-2xl font-bold mb-2">Customer Portals</h3>
-                <p class="text-slate-400">Modern interfaces for booking, ordering, and service delivery.</p>
-            </div>
-            <div class="glass md:col-span-2 p-8 rounded-3xl reveal flex flex-col justify-end border-rose-500/30">
-                <h3 class="text-2xl font-bold mb-2">Performance Analytics</h3>
-                <p class="text-slate-400">Dashboards that give you full clarity on where your revenue is coming from.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Solutions Grid -->
+                <div class="glass p-6 rounded-xl border-l-2 border-amber-500 hover:border-amber-400 transition">
+                    <h4 class="font-bold mb-2">Automation</h4>
+                    <p class="text-xs text-slate-500">Workflow orchestration</p>
+                </div>
+                <div class="glass p-6 rounded-xl border-l-2 border-amber-500 hover:border-amber-400 transition">
+                    <h4 class="font-bold mb-2">Web Systems</h4>
+                    <p class="text-xs text-slate-500">High-performance platforms</p>
+                </div>
+                <div class="glass p-6 rounded-xl border-l-2 border-amber-500 hover:border-amber-400 transition">
+                    <h4 class="font-bold mb-2">Dashboards</h4>
+                    <p class="text-xs text-slate-500">Real-time performance</p>
+                </div>
+                <div class="glass p-6 rounded-xl border-l-2 border-amber-500 hover:border-amber-400 transition">
+                    <h4 class="font-bold mb-2">AI Integration</h4>
+                    <p class="text-xs text-slate-500">Intelligent growth</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section id="cta" class="py-32 px-6 text-center">
-        <div class="max-w-4xl mx-auto glass p-16 rounded-[40px] reveal">
-            <h2 class="text-5xl font-bold mb-6 tracking-tight">Your Competitors Are Building.</h2>
-            <p class="text-xl text-slate-400 mb-10">Are you? Let's design your next digital advantage.</p>
-            <a href="tel:9494900435" class="inline-block bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-slate-200 transition transform hover:scale-105">Start My Transformation</a>
+    <section id="cta" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center glass p-20 rounded-2xl border-t border-amber-900/30">
+            <h2 class="text-5xl font-medium mb-6">Ready to Build Your Growth Engine?</h2>
+            <p class="text-slate-400 mb-10 max-w-lg mx-auto">Let's discuss how Veda Solutions can architect your digital advantage.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="px-8 py-4 bg-amber-600 rounded-full font-bold hover:bg-amber-700 transition">Book Strategy Call</a>
+                <a href="tel:+919494900435" class="px-8 py-4 border border-white/10 rounded-full hover:bg-white/5 transition">Call: 9494900435</a>
+            </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="py-12 px-6 text-center border-t border-white/5">
-        <div class="flex justify-center gap-6 mb-6">
-            <a href="https://www.instagram.com/vedasolutions?igsh=MTRya2RxcmwxZ2FxYQ==" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-all hover:scale-110">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.063.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808 0 2.43-.013 2.784-.06 3.808-.049 1.063-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06-2.43 0-2.784-.013-3.808-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808 0-2.43.013-2.784.06-3.808.049-1.063.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.536 2.013 8.89 2 11.32 2h.995zm0 2.152c-2.39 0-2.673.01-3.614.054-.88.04-1.358.182-1.677.305-.42.164-.72.36-1.036.676-.316.316-.512.616-.676 1.036-.123.319-.265.797-.305 1.677-.044.941-.054 1.224-.054 3.614 0 2.39.01 2.673.054 3.614.04.88.182 1.358.305 1.677.164.42.36.72.676 1.036.316.316.616.512 1.036.676.319.123.797.265 1.677.305.941.044 1.224.054 3.614.054 2.39 0 2.673-.01 3.614-.054.88-.04 1.358-.182 1.677-.305.42-.164.72-.36 1.036-.123.319.265.797.305 1.677.044.941.054 1.224.054 3.614 0 2.39-.01 2.673-.054 3.614-.04.88-.182 1.358-.305 1.677-.164.42-.36.72-.676 1.036-.316.316-.616.512-1.036.676-.319.123-.797.265-1.677.305-.941.044-1.224.054-3.614.054zm0 2.152c-3.13 0-5.668 2.538-5.668 5.668 0 3.13 2.538 5.668 5.668 5.668 3.13 0 5.668-2.538 5.668-5.668 0-3.13-2.538-5.668-5.668-5.668zm0 2.152c1.948 0 3.516 1.568 3.516 3.516 0 1.948-1.568 3.516-3.516 3.516-1.948 0-3.516-1.568-3.516-3.516 0-1.948 1.568-3.516 3.516-3.516zm5.827-4.148a1.326 1.326 0 11-2.652 0 1.326 1.326 0 012.652 0z" clip-rule="evenodd" /></svg>
-            </a>
-        </div>
-        <p class="text-slate-500 text-sm">© 2026 Veda Solutions. All rights reserved.</p>
-    </footer>
 
     <script>
-        // GSAP Animations
+        // Init GSAP
         gsap.registerPlugin(ScrollTrigger);
 
-        // Reveal effect for sections
-        document.querySelectorAll('.reveal').forEach(el => {
-            gsap.fromTo(el, 
-                { opacity: 0, y: 50 }, 
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 1, 
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 80%",
-                        toggleActions: "play none none none"
-                    }
+        // Simple reveal animation
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach(reveal => {
+            gsap.fromTo(reveal, { opacity: 0, y: 50 }, {
+                opacity: 1, y: 0,
+                duration: 1.2,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: reveal,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
                 }
-            );
+            });
         });
-
-        // Magnetic Button Effect (simplified)
-        const cta = document.querySelector('.cta-glow');
-        if(cta) {
-            cta.addEventListener('mousemove', (e) => {
-                const { left, top, width, height } = cta.getBoundingClientRect();
-                const x = e.clientX - left - width / 2;
-                const y = e.clientY - top - height / 2;
-                gsap.to(cta, { x: x * 0.2, y: y * 0.2, duration: 0.3 });
-            });
-            cta.addEventListener('mouseleave', () => {
-                gsap.to(cta, { x: 0, y: 0, duration: 0.3 });
-            });
-        }
     </script>
 </body>
 </html>
