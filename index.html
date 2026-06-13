@@ -8,28 +8,45 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
         
+        :root {
+            --bg-color: #0a0a0a;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        .light {
+            --bg-color: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --glass-bg: rgba(0, 0, 0, 0.05);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --card-bg: #f8fafc;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #e2e8f0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
         }
+
+        .text-secondary { color: var(--text-secondary); }
 
         .gradient-text {
             background: linear-gradient(90deg, #6366f1, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .nav-link:hover {
-            color: #6366f1;
-        }
-
+        
         .scroll-reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -44,30 +61,39 @@
 </head>
 <body class="overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
-    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-transparent backdrop-blur-sm">
-        <div class="text-2xl font-bold tracking-tighter text-white">VEDA<span class="text-indigo-500">.</span></div>
+    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center backdrop-blur-md">
+        <a href="#" class="flex items-center">
+            <img src="https://res.cloudinary.com/do4nuj2kh/image/upload/v1781354206/8926cc0f-3948-4297-ba4d-78ce621af644-removebg-preview_uytsjc.png" alt="Veda Solutions" class="h-10 w-auto">
+        </a>
         
-        <div class="relative">
-            <button id="exploreBtn" class="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:bg-white/10 transition-all">
-                <span>Explore</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        <div class="flex items-center gap-4">
+            <button id="themeToggle" class="p-2 rounded-full hover:bg-slate-200/20 transition-all">
+                <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
             </button>
-            
-            <div id="exploreMenu" class="hidden absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl p-2">
-                <a href="#problems" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Problems</a>
-                <a href="#solutions" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Solutions</a>
-                <a href="#lab" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Lab</a>
-                <a href="#projects" class="block px-4 py-2 hover:bg-indigo-950 rounded-xl transition">Projects</a>
-                <a href="#cta" class="block px-4 py-2 bg-indigo-600 rounded-xl mt-2 text-center text-white">Build With Us</a>
+            <div class="relative">
+                <button id="exploreBtn" class="flex items-center gap-2 bg-slate-200/10 border border-slate-500/10 px-4 py-2 rounded-full hover:bg-slate-200/20 transition-all">
+                    <span>Explore</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                
+                <div id="exploreMenu" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl p-2 z-50">
+                    <a href="#problems" class="block px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950 rounded-xl transition">Problems</a>
+                    <a href="#solutions" class="block px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950 rounded-xl transition">Solutions</a>
+                    <a href="#lab" class="block px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950 rounded-xl transition">Lab</a>
+                    <a href="#projects" class="block px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950 rounded-xl transition">Projects</a>
+                    <a href="#cta" class="block px-4 py-2 bg-indigo-600 rounded-xl mt-2 text-center text-white">Build With Us</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-20">
         <div class="max-w-4xl text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-sm font-medium mb-6">We don't just build websites.</span>
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 text-sm font-medium mb-6">We don't just build websites.</span>
             <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight">Your Business Has Problems.<br> <span class="gradient-text">We Build The Systems To Solve Them.</span></h1>
-            <p class="text-slate-400 text-xl mb-10 max-w-2xl mx-auto">Websites are just the beginning. We create digital engines that help businesses get more customers, automate work, and grow faster.</p>
+            <p class="text-secondary text-xl mb-10 max-w-2xl mx-auto">Websites are just the beginning. We create digital engines that help businesses get more customers, automate work, and grow faster.</p>
             <a href="#cta" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(99,102,241,0.3)]">Build My Solution</a>
         </div>
     </header>
@@ -78,24 +104,24 @@
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="glass p-8 rounded-3xl">
-                <div class="w-12 h-12 bg-rose-500/10 rounded-xl flex items-center justify-center mb-6 text-rose-400">?</div>
+                <div class="w-12 h-12 bg-rose-500/10 rounded-xl flex items-center justify-center mb-6 text-rose-500">?</div>
                 <h4 class="text-xl font-bold mb-2">Visibility</h4>
-                <p class="text-slate-400">Customers are lost because they simply can't find you online.</p>
+                <p class="text-secondary">Customers are lost because they simply can't find you online.</p>
             </div>
             <div class="glass p-8 rounded-3xl">
-                <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-400">⌛</div>
+                <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-500">⌛</div>
                 <h4 class="text-xl font-bold mb-2">Efficiency</h4>
-                <p class="text-slate-400">Time is wasted because your daily work is still manual.</p>
+                <p class="text-secondary">Time is wasted because your daily work is still manual.</p>
             </div>
             <div class="glass p-8 rounded-3xl">
-                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400">📉</div>
+                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-500">📉</div>
                 <h4 class="text-xl font-bold mb-2">Sales</h4>
-                <p class="text-slate-400">Revenue is missed because follow-ups are forgotten.</p>
+                <p class="text-secondary">Revenue is missed because follow-ups are forgotten.</p>
             </div>
             <div class="glass p-8 rounded-3xl">
-                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">🚀</div>
+                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-500">🚀</div>
                 <h4 class="text-xl font-bold mb-2">Growth</h4>
-                <p class="text-slate-400">Growth is stopped because modern systems are missing.</p>
+                <p class="text-secondary">Growth is stopped because modern systems are missing.</p>
             </div>
         </div>
     </section>
@@ -105,32 +131,32 @@
         <div class="grid md:grid-cols-2 gap-8">
             <div class="glass p-8 rounded-3xl border-l-4 border-l-indigo-500">
                 <h4 class="text-2xl font-bold mb-4">🌐 Business Presence System</h4>
-                <p class="text-slate-400 mb-4">Turn your idea into a digital identity with high-performance platforms.</p>
-                <ul class="text-slate-300 space-y-2">
+                <p class="text-secondary mb-4">Turn your idea into a digital identity with high-performance platforms.</p>
+                <ul class="space-y-2 opacity-80">
                     <li>✓ High-performance websites</li>
                     <li>✓ Custom Business portals</li>
                 </ul>
             </div>
             <div class="glass p-8 rounded-3xl border-l-4 border-l-emerald-500">
                 <h4 class="text-2xl font-bold mb-4">🍽 Customer Experience Systems</h4>
-                <p class="text-slate-400 mb-4">Interaction engines for Restaurants, Hotels, and Retail.</p>
-                <ul class="text-slate-300 space-y-2">
+                <p class="text-secondary mb-4">Interaction engines for Restaurants, Hotels, and Retail.</p>
+                <ul class="space-y-2 opacity-80">
                     <li>✓ QR Menus & Ordering</li>
                     <li>✓ Booking & Management</li>
                 </ul>
             </div>
             <div class="glass p-8 rounded-3xl border-l-4 border-l-amber-500">
                 <h4 class="text-2xl font-bold mb-4">⚙️ Business Automation Engine</h4>
-                <p class="text-slate-400 mb-4">Remove repetitive friction from your daily workflow.</p>
-                <ul class="text-slate-300 space-y-2">
+                <p class="text-secondary mb-4">Remove repetitive friction from your daily workflow.</p>
+                <ul class="space-y-2 opacity-80">
                     <li>✓ Lead management</li>
                     <li>✓ Internal Dashboards</li>
                 </ul>
             </div>
             <div class="glass p-8 rounded-3xl border-l-4 border-l-purple-500">
                 <h4 class="text-2xl font-bold mb-4">🤖 AI-Powered Marketing</h4>
-                <p class="text-slate-400 mb-4">Your brand deserves attention. We build content systems.</p>
-                <ul class="text-slate-300 space-y-2">
+                <p class="text-secondary mb-4">Your brand deserves attention. We build content systems.</p>
+                <ul class="space-y-2 opacity-80">
                     <li>✓ AI Ads & Creatives</li>
                     <li>✓ Automated content workflows</li>
                 </ul>
@@ -138,7 +164,7 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-white/5 scroll-reveal">
+    <section id="lab" class="py-24 px-6 bg-slate-200/5 dark:bg-white/5 scroll-reveal">
         <div class="max-w-6xl mx-auto">
             <h3 class="text-4xl font-bold mb-16 text-center">The Veda Method</h3>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -169,30 +195,36 @@
     <section id="projects" class="py-24 px-6 max-w-6xl mx-auto scroll-reveal">
         <h3 class="text-4xl font-bold mb-16 text-center">Project Showcase</h3>
         <div class="grid md:grid-cols-3 gap-6">
-            <div class="group relative overflow-hidden rounded-3xl glass p-6">
-                <div class="mb-4 text-indigo-400 text-sm font-bold">RESTAURANT</div>
+            <div class="glass p-6 rounded-3xl">
+                <div class="mb-4 text-indigo-500 text-sm font-bold">RESTAURANT</div>
                 <h4 class="text-2xl font-bold mb-2">QR Ordering System</h4>
-                <p class="text-slate-400 text-sm">Solved slow ordering issues by digitizing the customer menu journey.</p>
+                <p class="text-secondary text-sm">Solved slow ordering issues by digitizing the customer menu journey.</p>
             </div>
-            <div class="group relative overflow-hidden rounded-3xl glass p-6">
-                <div class="mb-4 text-emerald-400 text-sm font-bold">FUNCTION HALL</div>
+            <div class="glass p-6 rounded-3xl">
+                <div class="mb-4 text-emerald-500 text-sm font-bold">FUNCTION HALL</div>
                 <h4 class="text-2xl font-bold mb-2">Booking Engine</h4>
-                <p class="text-slate-400 text-sm">Transformed manual paper bookings into a streamlined calendar system.</p>
+                <p class="text-secondary text-sm">Transformed manual paper bookings into a streamlined calendar system.</p>
             </div>
-            <div class="group relative overflow-hidden rounded-3xl glass p-6">
-                <div class="mb-4 text-amber-400 text-sm font-bold">LOCAL BUSINESS</div>
+            <div class="glass p-6 rounded-3xl">
+                <div class="mb-4 text-amber-500 text-sm font-bold">LOCAL BUSINESS</div>
                 <h4 class="text-2xl font-bold mb-2">Visibility System</h4>
-                <p class="text-slate-400 text-sm">Helped local business reclaim their market share with digital presence.</p>
+                <p class="text-secondary text-sm">Helped local business reclaim their market share with digital presence.</p>
             </div>
         </div>
     </section>
 
     <section id="cta" class="py-24 px-6 text-center scroll-reveal">
         <h2 class="text-5xl font-bold mb-6">Your Competitors Are Building.</h2>
-        <h3 class="text-2xl text-slate-400 mb-10">Are You?</h3>
+        <h3 class="text-2xl text-secondary mb-10">Are You?</h3>
         <p class="text-xl mb-8">Let's create your next digital advantage.</p>
         <div class="flex flex-col items-center gap-4">
-            <a href="tel:9494900435" class="text-3xl font-bold text-white hover:text-indigo-400 transition">📞 9494900435</a>
+            <a href="tel:9494900435" class="text-3xl font-bold hover:text-indigo-500 transition">📞 9494900435</a>
+            
+            <a href="https://www.instagram.com/vedasolutions?igsh=MTRya2RxcmwxZ2FxYQ==" target="_blank" class="px-6 py-3 rounded-full border border-indigo-500/30 hover:bg-indigo-500/10 transition font-bold flex items-center gap-2 mt-4">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.173.055 1.808.252 2.23.418.56.217.96.477 1.38.897.42.42.68.82.897 1.38.166.422.363 1.057.418 2.23.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.173-.252 1.808-.418 2.23-.217.56-.477.96-.897 1.38-.42.42-.82.68-1.38.897-.422.166-1.057.363-2.23.418-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.173-.055-1.808-.252-2.23-.418-.56-.217-.96-.477-1.38-.897-.42-.42-.68-.82-.897-1.38-.166-.422-.363-1.057-.418-2.23-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.055-1.173.252-1.808.418-2.23.217-.56.477-.96.897-1.38.42-.42.82-.68 1.38-.897.422-.166 1.057-.363 2.23-.418.85-.038 1.17-.05 3.52-.05v.005zm0-2.163c-3.25 0-3.657.014-4.937.072-1.272.059-2.14.26-2.902.557-.788.307-1.455.72-2.122 1.387-.667.667-1.08 1.334-1.387 2.122-.298.762-.498 1.63-.557 2.902-.058 1.28-.072 1.687-.072 4.937s.014 3.657.072 4.937c.059 1.272.26 2.14.557 2.902.307.788.72 1.455 1.387 2.122.667.667 1.334 1.08 2.122 1.387.762.298 1.63.498 2.902.557 1.28.058 1.687.072 4.937.072s3.657-.014 4.937-.072c1.272-.059 2.14-.26 2.902-.557.788-.307 1.455-.72 2.122-1.387.667-.667 1.08-1.334 1.387-2.122.298-.762.498-1.63.557-2.902.058-1.28.072-1.687.072-4.937s-.014-3.657-.072-4.937c-.059-1.272-.26-2.14-.557-2.902-.307-.788-.72-1.455-1.387-2.122-.667-.667-1.334-1.08-2.122-1.387-.762-.298-1.63-.498-2.902-.557-.866-.041-1.26-.062-4.937-.062zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+                Follow us on Instagram
+            </a>
+
             <p class="text-slate-500 mt-8">© 2026 VEDA SOLUTIONS</p>
         </div>
     </section>
@@ -209,6 +241,21 @@
 
         document.addEventListener('click', () => {
             exploreMenu.classList.add('hidden');
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('light');
+            
+            // Toggle icon
+            if (document.documentElement.classList.contains('light')) {
+                themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />`;
+            } else {
+                themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
+            }
         });
 
         // Simple Scroll Reveal Animation
